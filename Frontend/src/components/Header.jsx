@@ -14,12 +14,13 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <NavLink to={'/'} className="text-[#00b341] hover:text-[#00d64f] transition-colors">Home</NavLink>
-            <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Educations</NavLink>
-            <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Experiences</NavLink>
-            <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Research-Paper</NavLink>
-            <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Achievements</NavLink>
-            <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Blog</NavLink>
+            <NavLink to="/" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Home</NavLink>
+            <NavLink to="/Educations" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Educations</NavLink>
+            <NavLink to="/Experiences" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Experiences</NavLink>
+            <NavLink to="/ResearchPaper" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Research-Paper</NavLink>
+            <NavLink to="/Achievements" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Achievements</NavLink>
+            <NavLink to="/Blog" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Blogs</NavLink>
+
           </div>
 
           {/* themeChange button and searchbar  */}
@@ -84,12 +85,12 @@ const Header = () => {
             <div className={`${isDark ? 'bg-[#2c2e33]' : 'bg-gray-100'
               } rounded-lg p-4`}>
               <div className="flex flex-col gap-4">
-                <NavLink to={'/'} className="text-[#00b341] hover:text-[#00d64f] transition-colors">Home</NavLink>
-                <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Educations</NavLink>
-                <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Experiences</NavLink>
-                <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Research-Paper</NavLink>
-                <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Achievements</NavLink>
-                <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Blog</NavLink>
+                <NavLink to="/" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Home</NavLink>
+                <NavLink to="/Educations" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Educations</NavLink>
+                <NavLink to="/Experiences" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Experiences</NavLink>
+                <NavLink to="/ResearchPaper" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Research-Paper</NavLink>
+                <NavLink to="/Achievements" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Achievements</NavLink>
+                <NavLink to="/Blog" className={({ isActive }) => isActive ? "text-[#00b341] hover:text-[#00d64f] transition-colors" : `${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}> Blogs</NavLink>
               </div>
             </div>
           </div>
