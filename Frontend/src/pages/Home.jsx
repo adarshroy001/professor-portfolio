@@ -17,11 +17,11 @@ function Home() {
       {/* Hero Section */}
       <div className="flex flex-col  items-center justify-between md:flex-row p-2 md:px-24 md:py-8 md:pt-36">
         <div className="flex-1">
-          <h1 className="text-5xl font-bold mb-4">{name}</h1>
-          <div className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-4`}>
+          <h1 className="text-5xl font-bold mb-4 md:mb-4">{name}</h1>
+          <div className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mt-4 md:mt-8`}>
             Working at  <span className={`${isDark ? 'bg-[#2c2e33]' : 'bg-gray-100'} px-2 py-1 rounded`}>{workPlace}</span>
           </div>
-          <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>
+          <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mt-4 md:mt-8`}>
             {about}
           </p>
         </div>

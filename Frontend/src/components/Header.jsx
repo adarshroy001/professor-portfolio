@@ -17,9 +17,9 @@ const Header = () => {
             <NavLink to={'/'} className="text-[#00b341] hover:text-[#00d64f] transition-colors">Home</NavLink>
             <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Educations</NavLink>
             <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Experiences</NavLink>
-            <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Publications</NavLink>
+            <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Research-Paper</NavLink>
             <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Achievements</NavLink>
-            <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Memorable moments</NavLink>
+            <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Blog</NavLink>
           </div>
 
           {/* themeChange button and searchbar  */}
@@ -87,9 +87,9 @@ const Header = () => {
                 <NavLink to={'/'} className="text-[#00b341] hover:text-[#00d64f] transition-colors">Home</NavLink>
                 <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Educations</NavLink>
                 <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Experiences</NavLink>
-                <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Publications</NavLink>
+                <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Research-Paper</NavLink>
                 <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Achievements</NavLink>
-                <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Memorable moments</NavLink>
+                <NavLink to={'/'} className={`${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Blog</NavLink>
               </div>
             </div>
           </div>
