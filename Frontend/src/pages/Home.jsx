@@ -34,7 +34,7 @@ function Home() {
           <img
             src={homeData.img}
             alt="Profile"
-            className="w-40 h-40 md:h-52 md:w-52 rounded-lg object-cover"
+            className="w-40 h-40 md:h-52 md:w-52 xl:h-60 xl:w-60 rounded-lg object-cover"
           />
         </div>
       </div>
