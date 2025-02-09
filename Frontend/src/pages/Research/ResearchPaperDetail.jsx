@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useTheme } from '../../ThemeContext';
+import  Link  from 'react-router-dom';
+
 
 
 const ResearchPaperDetail = () => {
@@ -30,14 +32,14 @@ const ResearchPaperDetail = () => {
                 <div className={`shadow-lg rounded-lg p-6 w-full max-w-2xl  ${isDark ? 'bg-gray-700 text-white' : 'bg-white text-gray-900'} transition-colors duration-200`}>
                     <h1 className="text-2xl font-bold">{paper.title}</h1>
                     <p className=" mt-4">{paper.fullDescription}</p>
-                    <a
-                        href={paper.link}
+                    <Link
+                        to={paper.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
                     >
                         Visit
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
