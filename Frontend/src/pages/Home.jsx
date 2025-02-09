@@ -29,7 +29,7 @@ function Home() {
           <img
             src={img}
             alt="Profile"
-            className="w-40 h-40 md:h-52 md:w-52 rounded-lg"
+            className="w-40 h-40 md:h-52 md:w-52 rounded-lg object-cover"
           />
         </div>
       </div>
