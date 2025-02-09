@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
 const blogRoutes = require("./routes/blogRoutes");
+const researchPaperRoutes = require("./routes/researchPaperRoutes") ;
 
 
 dotenv.config();
@@ -30,6 +31,7 @@ app.get("/", (req, res) => res.send("API is running..."));
 app.use("/api/home", require("./routes/homeRoutes"));
 app.use("/api/education", require("./routes/educationRoutes"));
 app.use("/api/blogs", blogRoutes);
+app.use("/api/research-papers", researchPaperRoutes);
 
 
 // Start Server
