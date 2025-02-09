@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import API_BASE_URL from "../config";
 
 const AdminResearchPapers = () => {
   const [papers, setPapers] = useState([]);
@@ -21,7 +22,7 @@ const AdminResearchPapers = () => {
 
   const fetchResearchPapers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/research-papers/");
+      const response = await axios.get(`${API_BASE_URL}/api/research-papers/`);
       setPapers(response.data);
     } catch (error) {
       console.error("Error fetching research papers:", error);
@@ -38,10 +39,10 @@ const AdminResearchPapers = () => {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/research-papers/${editId}`, formData);
+        await axios.put(`h${API_BASE_URL}/api/research-papers/${editId}`, formData);
         toast.success("Research paper updated successfully!");
       } else {
-        await axios.post("http://localhost:5000/api/research-papers/", formData);
+        await axios.post(`${API_BASE_URL}/api/research-papers/`, formData);
         toast.success("Research paper added successfully!");
       }
       resetForm();
@@ -67,7 +68,7 @@ const AdminResearchPapers = () => {
   // Handle Delete
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/research-papers/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/research-papers/${id}`);
       toast.success("Research paper deleted successfully!");
       fetchResearchPapers();
     } catch (error) {

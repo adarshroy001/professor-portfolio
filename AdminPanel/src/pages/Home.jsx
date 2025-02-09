@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import API_BASE_URL from "../config";
 
 function Home() {
     const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ function Home() {
 
         try {
             const response = await axios.put(
-                "http://localhost:5000/api/home/update",
+                `${API_BASE_URL}/api/home/update`,
                 formDataToSend,
                 { headers: { "Content-Type": "multipart/form-data" } }
             );

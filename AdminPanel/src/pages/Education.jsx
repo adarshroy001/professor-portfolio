@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import API_BASE_URL from "../config";
 
 function Education() {
   const [educations, setEducations] = useState([]);
@@ -25,7 +26,7 @@ function Education() {
 
   const fetchEducations = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/education");
+      const response = await axios.get(`${API_BASE_URL}/api/education`);
       setEducations(response.data);
     } catch (error) {
       console.error("Error fetching education data:", error);
@@ -62,12 +63,12 @@ function Education() {
 
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/education/${editId}`, formDataToSend, {
+        await axios.put(`${API_BASE_URL}/api/education/${editId}`, formDataToSend, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         toast.success("Education updated successfully");
       } else {
-        await axios.post("http://localhost:5000/api/education", formDataToSend, {
+        await axios.post(`${API_BASE_URL}/api/education`, formDataToSend, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         toast.success("Education added successfully");
@@ -112,7 +113,7 @@ function Education() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/education/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/education/${id}`);
       toast.success("Education deleted successfully");
       fetchEducations();
     } catch (error) {

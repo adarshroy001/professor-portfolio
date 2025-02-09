@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import API_BASE_URL from "../config";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -24,7 +25,7 @@ const Blog = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/blogs/');
+      const response = await axios.get(`${API_BASE_URL}/api/blogs/`);
       setBlogs(response.data);
     } catch (error) {
       console.error("Error fetching blogs:", error);
@@ -61,12 +62,12 @@ const Blog = () => {
 
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/blogs/${editId}`, formDataToSend, {
+        await axios.put(`${API_BASE_URL}/api/blogs/${editId}`, formDataToSend, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         toast.success("Blog updated successfully");
       } else {
-        await axios.post(`http://localhost:5000/api/blogs`, formDataToSend, {
+        await axios.post(`${API_BASE_URL}/api/blogs`, formDataToSend, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         toast.success("Blog added successfully");
@@ -101,7 +102,7 @@ const Blog = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/blogs/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/blogs/${id}`);
       toast.success("Blog deleted successfully");
       fetchBlogs();
     } catch (error) {
