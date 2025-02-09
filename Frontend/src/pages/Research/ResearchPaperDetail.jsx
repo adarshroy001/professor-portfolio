@@ -26,10 +26,10 @@ const ResearchPaperDetail = () => {
     return (
         <div className={`min-h-[88vh] ${isDark ? 'bg-[#1a1b1e] text-white' : 'bg-white text-gray-900'} transition-colors duration-200 `}>
 
-            <div className="container mx-auto p-6 min-h-screen flex flex-col items-center justify-center">
-                <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 w-full max-w-2xl">
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{paper.title}</h1>
-                    <p className="text-gray-700 dark:text-gray-300 mt-4">{paper.fullDescription}</p>
+            <div className={`container mx-auto p-6 min-h-screen flex flex-col items-center justify-center`}>
+                <div className={`shadow-lg rounded-lg p-6 w-full max-w-2xl  ${isDark ? 'bg-gray-700 text-white' : 'bg-white text-gray-900'} transition-colors duration-200`}>
+                    <h1 className="text-2xl font-bold">{paper.title}</h1>
+                    <p className=" mt-4">{paper.fullDescription}</p>
                     <a
                         href={paper.link}
                         target="_blank"
