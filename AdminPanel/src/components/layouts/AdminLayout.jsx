@@ -1,26 +1,17 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
-import {
-  HomeIcon,
-  AcademicCapIcon,
-  BriefcaseIcon,
-  DocumentTextIcon,
-  TrophyIcon,
-  NewspaperIcon,
-  SunIcon,
-  MoonIcon,
-  Bars3Icon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+
+import { IoHomeOutline ,IoBriefcaseOutline ,IoDocumentOutline ,IoTrophyOutline ,IoNewspaperOutline ,IoSunnyOutline ,IoMoonOutline ,IoMenuOutline ,IoCloseOutline} from "react-icons/io5";
+import { HiOutlineAcademicCap } from "react-icons/hi2";
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: HomeIcon },
-  { name: 'Education', href: '/education', icon: AcademicCapIcon },
-  { name: 'Experience', href: '/experience', icon: BriefcaseIcon },
-  { name: 'Research Papers', href: '/research-papers', icon: DocumentTextIcon },
-  { name: 'Achievements', href: '/achievements', icon: TrophyIcon },
-  { name: 'Blogs', href: '/blogs', icon: NewspaperIcon },
+  { name: 'Dashboard', href: '/', icon: IoHomeOutline },
+  { name: 'Education', href: '/education', icon: HiOutlineAcademicCap },
+  { name: 'Experience', href: '/experience', icon: IoBriefcaseOutline },
+  { name: 'Research Papers', href: '/research-papers', icon: IoDocumentOutline },
+  { name: 'Achievements', href: '/achievements', icon: IoTrophyOutline },
+  { name: 'Blogs', href: '/blogs', icon: IoNewspaperOutline },
 ];
 
 function AdminLayout() {
@@ -38,7 +29,7 @@ function AdminLayout() {
             <div className="flex items-center justify-between h-16 px-4">
               <span className="text-xl font-semibold dark:text-white">Admin Panel</span>
               <button onClick={() => setSidebarOpen(false)}>
-                <XMarkIcon className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                <IoCloseOutline className="w-6 h-6 text-gray-500 dark:text-gray-400" />
               </button>
             </div>
             <nav className="flex-1 px-2 py-4 space-y-1">
@@ -95,7 +86,7 @@ function AdminLayout() {
               className="px-4 text-gray-500 lg:hidden"
               onClick={() => setSidebarOpen(true)}
             >
-              <Bars3Icon className="w-6 h-6" />
+              <IoMenuOutline className="w-6 h-6" />
             </button>
 
             <div className="flex items-center">
@@ -104,9 +95,9 @@ function AdminLayout() {
                 className="p-2 text-gray-500 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400"
               >
                 {darkMode ? (
-                  <SunIcon className="w-6 h-6" />
+                  <IoSunnyOutline className="w-6 h-6" />
                 ) : (
-                  <MoonIcon className="w-6 h-6" />
+                  <IoMoonOutline className="w-6 h-6" />
                 )}
               </button>
             </div>
