@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useTheme } from '../../ThemeContext';
 import  {Link}  from 'react-router-dom';
+import API_BASE_URL from "../../config";
 
 
 
@@ -14,7 +15,7 @@ const ResearchPaperDetail = () => {
     useEffect(() => {
         const fetchPaper = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/research-papers/${id}`);
+                const response = await axios.get(`${API_BASE_URL}/api/research-papers/${id}`);
                 setPaper(response.data);
             } catch (error) {
                 console.error("Error fetching research paper:", error);

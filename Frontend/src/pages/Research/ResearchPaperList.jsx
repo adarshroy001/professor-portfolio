@@ -13,7 +13,7 @@ const ResearchPaperList = () => {
   useEffect(() => {
     const fetchPapers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/research-papers");
+        const response = await axios.get(`${API_BASE_URL}/api/research-papers`);
         setPapers(response.data);
       } catch (error) {
         console.error("Error fetching research papers:", error);
