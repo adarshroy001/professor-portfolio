@@ -1,16 +1,22 @@
 const multer = require("multer");
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const cloudinary = require("../utils/cloudinary");
+const path = require("path");
 
-// Cloudinary storage
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-        folder: "professor-portfolio", // Cloudinary folder name
-        allowed_formats: ["jpg", "png", "jpeg"]
+// Configure Multer to accept file uploads
+const storage = multer.diskStorage({
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + "-" + file.originalname);
     }
 });
 
-const upload = multer({ storage });
+// File filter to accept only images
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith("image/")) {
+        cb(null, true);
+    } else {
+        cb(new Error("Invalid file type. Only images are allowed!"), false);
+    }
+};
+
+const upload = multer({ storage, fileFilter });
 
 module.exports = upload;
