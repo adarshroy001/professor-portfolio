@@ -1,8 +1,11 @@
 import React from "react";
+import { useTheme } from '../ThemeContext';
 
 const BlogCard = ({ mediaType, mediaSrc, title, description }) => {
+        const { isDark } = useTheme();
   return (
-    <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden max-w-md">
+<div className={`rounded-lg overflow-hidden max-w-md 
+    ${isDark ? 'bg-[#2c2e33] border border-[#ade9c3]' : 'bg-gray-100 border border-[#85feb1]'}`}>
       {/* Media (Image/Video) */}
       <div className="w-full h-52">
         {mediaType === "video" ? (
@@ -17,8 +20,8 @@ const BlogCard = ({ mediaType, mediaSrc, title, description }) => {
 
       {/* Blog Details */}
       <div className="p-4">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h2>
-        <p className="mt-2 text-gray-600 dark:text-gray-300 text-sm">{description}</p>
+        <h2 className={`${isDark ? 'text-white ' : ' text-gray-700'} text-lg font-semibold `}>{title}</h2>
+        <p className={`${isDark ? 'text-white ' : ' text-gray-700'} text-sm  `}>{description}</p>
       </div>
     </div>
   );

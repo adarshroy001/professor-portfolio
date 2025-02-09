@@ -80,24 +80,33 @@ const updateBlog = async (req, res) => {
         if (!blog) return res.status(404).json({ message: "Blog not found" });
 
         let mediaUrl = blog.media;
+        let updatedMediaType = mediaType || blog.mediaType; // Default to existing type
+
         if (req.file) {
             // Delete old media from Cloudinary
             if (blog.media) {
                 const publicId = blog.media.split('/').pop().split('.')[0];
-                await cloudinary.uploader.destroy(`professor-portfolio/${publicId}`);
+                await cloudinary.uploader.destroy(publicId);
             }
 
-            // Upload new media
+            // Determine media type based on file MIME type
+            const fileMimeType = req.file.mimetype; 
+
+            updatedMediaType = fileMimeType.startsWith("video") ? "video" : "image";
+
+            // Upload new media to Cloudinary
             const result = await cloudinary.uploader.upload(req.file.path, {
-                resource_type: mediaType === "video" ? "video" : "image"
+                resource_type: updatedMediaType === "video" ? "video" : "image"
             });
+
             mediaUrl = result.secure_url;
         }
 
+        // Update blog fields
         blog.title = title || blog.title;
         blog.description = description || blog.description;
         blog.media = mediaUrl;
-        blog.mediaType = mediaType || blog.mediaType;
+        blog.mediaType = updatedMediaType; // Ensure mediaType updates correctly
 
         await blog.save();
         res.json({ message: "Blog updated successfully", blog });
