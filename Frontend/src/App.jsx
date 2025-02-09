@@ -7,6 +7,7 @@ import ResearchPaper from './pages/Research-Paper'
 import Achievements from './pages/Achievements'
 import Blog from './pages/Blog'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Achievements" exact={true} element={<Achievements />} />
           <Route path="/Blog" exact={true} element={<Blog />} />
         </Routes>
+        <Footer/>
 
       </BrowserRouter>
     </>

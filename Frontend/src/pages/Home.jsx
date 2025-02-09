@@ -46,12 +46,6 @@ function Home() {
             <Link to={'/'} className='text-2xl'><FaInstagram /></Link>
           </div>
         </div>
-        <div className='flex justify-end mt-8 mr-2 md:mt-0 md:absolute md:bottom-2 md:right-24'>
-        <p  className={`${isDark ? 'text-gray-300' : 'text-gray-500'} text-xs md:text-sm`}>© {new Date().getFullYear()} Adarsh Roy. All Rights Reserved</p>
-        </div>
-
-
-
 
 
     </div>
