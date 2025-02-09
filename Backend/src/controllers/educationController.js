@@ -24,7 +24,12 @@ const addEducation = async (req, res) => {
         }
 
         // Get Cloudinary URL
-        const collegeImg = req.file ? req.file.path : "";
+        let collegeImg = "";
+        if (req.file) {
+            const result = await cloudinary.uploader.upload(req.file.path);
+            collegeImg = result.secure_url;
+        }
+
 
         // Create a new education entry
         const newEducation = new Education({
@@ -68,4 +73,42 @@ const deleteEducation = async (req, res) => {
     }
 };
 
-module.exports = { getEducation, addEducation, deleteEducation };
+const updateEducation = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { DegreeName, CollegeName, Department, Title, Supervisor, year } = req.body;
+
+        let education = await Education.findById(id);
+        if (!education) {
+            return res.status(404).json({ message: "Education not found" });
+        }
+
+        // If a new image is uploaded, replace the old one
+        let collegeImg = education.collegeImg;
+        if (req.file) {
+            // Delete old image from Cloudinary
+            if (collegeImg) {
+                const publicId = collegeImg.split('/').pop().split('.')[0];
+                await cloudinary.uploader.destroy(`professor-portfolio/${publicId}`);
+            }
+
+            // Upload new image to Cloudinary
+            const result = await cloudinary.uploader.upload(req.file.path);
+            collegeImg = result.secure_url;
+        }
+
+        // Update education entry
+        education = await Education.findByIdAndUpdate(
+            id,
+            { DegreeName, CollegeName, Department, Title, Supervisor, year, collegeImg },
+            { new: true }
+        );
+
+        res.json({ message: "Education updated successfully!", education });
+    } catch (error) {
+        res.status(500).json({ message: "Server Error", error });
+    }
+};
+
+
+module.exports = { getEducation, addEducation, deleteEducation ,updateEducation };
