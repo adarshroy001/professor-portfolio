@@ -9,10 +9,13 @@ import Achievements from './pages/Achievements';
 import Blogs from './pages/Blogs';
 import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <ThemeProvider>
+              <ToastContainer position="top-right" autoClose={3000} />
       <Router>
         <Routes>
           <Route element={<AdminLayout />}>

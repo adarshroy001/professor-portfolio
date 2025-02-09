@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function Home() {
     const [formData, setFormData] = useState({
@@ -33,9 +34,10 @@ function Home() {
                 { headers: { "Content-Type": "multipart/form-data" } }
             );
 
-            alert(response.data.message);
+            toast.success(response.data.message);
         } catch (error) {
             console.error("Error updating home:", error);
+            toast.error("Failed to update home data");
         }
     };
 
@@ -95,7 +97,7 @@ function Home() {
                         <input
                             type="file"
                             accept="image/*"
-                            className="mt-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer dark:text-gray-300 dark:border-gray-600"
+                            className="mt-2 pl-3 py-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
                             onChange={handleFileChange}
                         />
                     </div>
@@ -113,4 +115,3 @@ function Home() {
 }
 
 export default Home;
-
