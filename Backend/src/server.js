@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const path = require("path");
+
 
 dotenv.config();
 const app = express();
@@ -18,6 +20,8 @@ mongoose
        })
 
 
+// Serve static files from the uploads folder
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 // Routes
 app.get("/", (req, res) => res.send("API is running..."));
 app.use("/api/home", require("./routes/homeRoutes"));

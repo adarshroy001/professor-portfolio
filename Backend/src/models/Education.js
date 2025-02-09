@@ -7,8 +7,7 @@ const educationSchema = new mongoose.Schema({
     Title: { type: String, required: true },
     Supervisor: { type: String, required: true },
     year: { type: String, required: true },
-    collegeImg: { type: String, required: true },
+    collegeImg: { type: String }, // Image URL field
 });
 
-const Education = mongoose.model("Education", educationSchema);
-module.exports = Education;
+module.exports = mongoose.model("Education", educationSchema);
