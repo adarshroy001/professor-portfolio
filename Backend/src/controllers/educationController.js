@@ -1,6 +1,5 @@
 const Education = require("../models/Education");
-const fs = require("fs");
-const path = require("path");
+const cloudinary = require("../utils/cloudinary"); // Import Cloudinary
 
 // Get all education entries (Sorted by year in descending order)
 const getEducation = async (req, res) => {
@@ -12,21 +11,20 @@ const getEducation = async (req, res) => {
     }
 };
 
+// Add new education entry
 const addEducation = async (req, res) => {
     try {
         const { DegreeName, CollegeName, Department, Title, Supervisor, year } = req.body;
-        const collegeImg = req.file ? `/uploads/${req.file.filename}` : null; // Store image path
 
         // Check if the same education entry already exists
         const existingEducation = await Education.findOne({ DegreeName, CollegeName, year });
 
         if (existingEducation) {
-           
-            if (req.file) {
-                fs.unlinkSync(path.join(__dirname, `../../uploads/${req.file.filename}`));
-            }
             return res.status(400).json({ message: "This education entry already exists!" });
         }
+
+        // Get Cloudinary URL
+        const collegeImg = req.file ? req.file.path : "";
 
         // Create a new education entry
         const newEducation = new Education({
@@ -36,17 +34,17 @@ const addEducation = async (req, res) => {
             Title,
             Supervisor,
             year,
-            collegeImg,
+            collegeImg, // Cloudinary image URL
         });
 
         await newEducation.save();
-        res.json({ message: "Education added successfully!" });
+        res.json({ message: "Education added successfully!", education: newEducation });
     } catch (error) {
-        res.status(500).json({ message: "Server Error" });
+        res.status(500).json({ message: "Server Error", error });
     }
 };
 
-// delete an education entry & remove associated image
+// Delete an education entry & remove associated image from Cloudinary
 const deleteEducation = async (req, res) => {
     try {
         const education = await Education.findById(req.params.id);
@@ -54,20 +52,20 @@ const deleteEducation = async (req, res) => {
             return res.status(404).json({ message: "Education not found" });
         }
 
-        // Remove image file if it exists
+        // Extract Cloudinary Public ID from URL
         if (education.collegeImg) {
-            const filePath = path.join(__dirname, `../../${education.collegeImg}`);
-            if (fs.existsSync(filePath)) {
-                fs.unlinkSync(filePath);
-            }
+            const publicId = education.collegeImg.split('/').pop().split('.')[0]; // Extract ID from URL
+
+            // Remove image from Cloudinary
+            await cloudinary.uploader.destroy(`professor-portfolio/${publicId}`);
         }
 
+        // Delete education entry from database
         await education.deleteOne();
         res.json({ message: "Education deleted successfully" });
     } catch (error) {
-        res.status(500).json({ message: "Server Error" });
+        res.status(500).json({ message: "Server Error", error });
     }
 };
 
 module.exports = { getEducation, addEducation, deleteEducation };
-

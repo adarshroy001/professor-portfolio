@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTheme } from '../ThemeContext';
-import API_BASE_URL from "../config";
+
 
 
 
@@ -19,7 +19,7 @@ function EducationCard({ eduDetail }) {
             <div className="Bottom-half w-[90%] lg:w-[80vw] mx-auto mt-4 grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2">
                 <div className="image w-full mt-0 sm:mt-4">
                     <div className=' rounded-xl !ml-4 sm:!ml-8 w-[85%] sm:w-[90%] xl:w-[75%] !h-[100%]'>
-                        <img src={`${API_BASE_URL}/uploads/${eduDetail.collegeImg}`} alt="" className='rounded-xl object-cover w-full h-full p-1' />
+                        <img src={eduDetail.collegeImg} alt="" className='rounded-xl object-cover w-full h-full p-1' />
                     </div>
                 </div>
 
