@@ -5,6 +5,6 @@ const upload = require("../middlewares/uploadMiddleware"); // Multer Middleware
 const router = express.Router();
 
 router.get("/", getHome);
-router.put("/", upload.single("img"), updateHome); // Handle image upload
+router.put("/update", upload.single("img"), updateHome); // "img" must match frontend field name
 
 module.exports = router;

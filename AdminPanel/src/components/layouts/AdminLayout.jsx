@@ -4,9 +4,11 @@ import { useTheme } from '../../context/ThemeContext';
 
 import { IoHomeOutline ,IoBriefcaseOutline ,IoDocumentOutline ,IoTrophyOutline ,IoNewspaperOutline ,IoSunnyOutline ,IoMoonOutline ,IoMenuOutline ,IoCloseOutline} from "react-icons/io5";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
+import { MdOutlineDashboard } from "react-icons/md";
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: IoHomeOutline },
+  { name: 'Dashboard', href: '/', icon: MdOutlineDashboard },
+  { name: 'Home', href: '/Home', icon: IoHomeOutline },
   { name: 'Education', href: '/education', icon: HiOutlineAcademicCap },
   { name: 'Experience', href: '/experience', icon: IoBriefcaseOutline },
   { name: 'Research Papers', href: '/research-papers', icon: IoDocumentOutline },
@@ -17,6 +19,8 @@ const navigation = [
 function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { darkMode, toggleDarkMode } = useTheme();
+  console.log(darkMode);
+  
   const location = useLocation();
 
   return (

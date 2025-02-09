@@ -3,12 +3,22 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem('darkMode') === 'true'
-  );
+  const [darkMode, setDarkMode] = useState(() => {
+    return JSON.parse(localStorage.getItem('darkMode')) || false;
+  });
 
+  // Apply theme on first render
   useEffect(() => {
-    localStorage.setItem('darkMode', darkMode);
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  // Update localStorage and apply theme when darkMode changes
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
     if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {
@@ -17,7 +27,7 @@ export function ThemeProvider({ children }) {
   }, [darkMode]);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setDarkMode(prev => !prev);
   };
 
   return (
@@ -30,3 +40,6 @@ export function ThemeProvider({ children }) {
 export function useTheme() {
   return useContext(ThemeContext);
 }
+
+
+
